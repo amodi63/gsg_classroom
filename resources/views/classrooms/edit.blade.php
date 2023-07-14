@@ -5,6 +5,7 @@
     <h1>Classrooms</h1>
     <form  action="{{ route('classrooms.update', $classroom->id ) }}"  method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
           <div class="form-floating mb-3">
             <input type="text" class="form-control" name="name"  value="{{ $classroom->name }}" id="name" placeholder="Enter Class Name">
             <label for="name">CLass Name </label>
