@@ -1,34 +1,35 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Classrooms</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="contrainer">
+
+ @extends('layouts.master')
+ @section('title', 'Classrooms')
+ @section('content')
     <h1>Classrooms</h1>
-    <form action="POST" method="post">
-        
+    <form  action="{{ route('classrooms.store') }}"  method="post" enctype="multipart/form-data">
+      @csrf
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="Enter Class Name">
-            <label for="name">Email address</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Class Name">
+            <label for="name">CLass Name </label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="section" placeholder="Enter Section Name">
+            <input type="text" class="form-control" name="section" id="section" placeholder="Enter Section Name">
             <label for="text">Section</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="subject" placeholder="Enter Subject Name">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Enter Subject Name">
             <label for="subject">Subject</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="room" placeholder="Enter Room Name">
+            <input type="text" class="form-control" name="room" id="room" placeholder="Enter Room Name">
             <label for="room">Room</label>
           </div>
+          <div class="form-floating mb-3">
+            <input class="form-control " type="file" name="classroom_image" id="classroom_image">
+            <label for="classroom_image" class="custom-file-label">Class Image</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input class="form-control " type="file" name="cover_image_path" id="cover_image_path">
+            <label for="cover_image_path" class="custom-file-label">CLass Cover Image</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Create Classroom</button>
     </form>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  </body>
-</html>
+@endsection
