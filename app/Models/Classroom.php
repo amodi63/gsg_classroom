@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 class Classroom extends Model
 {
     use HasFactory;
+    public static $disk = 'public' ;
     protected $fillable = ['name', 'code', 'subject', 'room', 'cover_image_path','classroom_image', 'theme','section','user_id','status'];
     protected static function boot(): void
     {
