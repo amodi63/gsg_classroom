@@ -1,6 +1,10 @@
 <div class="modal fade" id="editTopicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
+        @isset($topic)
         <div class="modal-content">
+           
+                
+           
             <form action="{{ route('topics.update', $topic->id) }}" method="post">
             
             <div class="modal-header">
@@ -25,5 +29,6 @@
                     </div>
                 </form>
         </div>
+        @endisset
     </div>
 </div>

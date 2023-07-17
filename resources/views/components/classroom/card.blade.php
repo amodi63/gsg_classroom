@@ -3,6 +3,7 @@
     <img src="{{asset('storage/'.$classroom->classroom_image) }}" class="card-img-top" alt="Classroom Image" style="max-height: 250px;">
     <div class="card-body">
         <h5 class="card-title">{{ $classroom->room }}</h5>
+       
         <p class="card-text">{{ $classroom->description }}</p>
     </div>
     

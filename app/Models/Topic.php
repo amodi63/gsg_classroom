@@ -19,22 +19,5 @@ class Topic extends Model
 
       
     }
-    public function getFormattedCreatedDateAttribute()
-    {
-        $date = $this->attributes['created_at'];
-    
-        $formattedDate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->locale(app()->currentLocale())->isoFormat('dddd D MMMM، YYYY');
-    
-        return $formattedDate;
-    }
-    
-    public function getFormattedUpdatedDateAttribute()
-    {
-        $date = $this->attributes['updated_at'];
-
-        $formattedDate = Carbon::createFromFormat('Y-m-d H:i:s', $date)->locale(app()->currentLocale())->isoFormat('dddd D MMMM');
-
-        return $formattedDate;
-    }
-
+    public $timestamps = false;
 }

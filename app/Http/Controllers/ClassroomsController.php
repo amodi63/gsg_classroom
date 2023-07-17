@@ -41,7 +41,7 @@ class ClassroomsController extends Controller
     public function show(Classroom $classroom): View
     {   
        
-        $topics = Topic::where('classroom_id',$classroom->id)->latest()->get();
+        $topics = Topic::where('classroom_id',$classroom->id)->latest('id')->get(); 
         
         return view('classrooms.show', compact('classroom','topics'));
     }

@@ -31,7 +31,6 @@ class TopicsController extends Controller
      */
     public function store(TopicRequest $request)
     {
-       
         Topic::create( $request->validated());
         return redirect()->back()->with('success', 'Topic Created Successfully!');
     }
