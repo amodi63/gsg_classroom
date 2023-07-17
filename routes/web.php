@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassroomsController;
+use App\Http\Controllers\TopicsController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,4 @@ Route::get('/', function () {
 // Route::put('classrooms/{classroom:code}/update',[ClassroomsController::class, 'update'])->name('classrooms.update')->where('classroom','[0-9]+');
 // Route::delete('classrooms/{classroom:code}/delete',[ClassroomsController::class, 'delete'])->name('classrooms.delete')->where('classroom','[0-9]+');
 Route::resource('classrooms', ClassroomsController::class);
+Route::resource('topics', TopicsController::class);

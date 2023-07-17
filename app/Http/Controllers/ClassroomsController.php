@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClassroomRequest;
 use App\Models\Classroom;
+use App\Models\Topic;
 use App\Traits\Image;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ClassroomsController extends Controller
     {
 
         $classrooms = Classroom::latest()->get();
-
+       
         return view('classrooms.index', compact('classrooms'));
     }
     public function create(): View
@@ -38,9 +39,11 @@ class ClassroomsController extends Controller
         return redirect()->route('classrooms.index')->with('success','Classroom Created Successfully!');
     }
     public function show(Classroom $classroom): View
-    {
-
-        return view('classrooms.show', compact('classroom'));
+    {   
+       
+        $topics = Topic::where('classroom_id',$classroom->id)->latest()->get();
+        
+        return view('classrooms.show', compact('classroom','topics'));
     }
     public function edit(Classroom $classroom): View
     {

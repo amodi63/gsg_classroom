@@ -33,5 +33,5 @@
           <img src="{{ asset('storage/'.$classroom->cover_image_path) }}" class="img-thumbnail mt-2" width="300" height="150"  alt="Cover Image">
       @endif
         </div>
-        <button type="submit" class="btn btn-primary">{{ $btn_text }}</button>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk "></i>{{ $btn_text }}</button>
   </form>

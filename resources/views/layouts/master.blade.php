@@ -9,7 +9,18 @@
 
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-REPLACE_WITH_INTEGRITY_VALUE" crossorigin="anonymous" />
-
+        <script src="https://kit.fontawesome.com/1e750d2ce4.js" crossorigin="anonymous"></script>
+        <style>
+            i {
+                margin-block-end: 3px !important;
+            }
+        
+            i.fa-floppy-disk, i.fa-xmark {
+                margin-inline-end: 4px !important;
+            }
+        </style>
+        
+        @stack('styles')
 </head>
 
 <body>
@@ -20,21 +31,6 @@
      
 
         <main>
-            @if(session('success'))
-    <div class="alert alert-success  alert-dismissible fade show" role="alert">
-        
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger  alert-dismissible fade show" role="alert">
-        
-        {{ session('error') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
             @yield('content')
         </main>
        @include('layouts.footer')
