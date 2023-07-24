@@ -40,7 +40,7 @@
                                         <form action="{{ route('topics.destroy', $topic->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="dropdown-item">
+                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">
                                                 <i class="fa fa-trash-alt"></i> Delete
                                             </button>
                                         </form>

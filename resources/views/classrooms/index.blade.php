@@ -6,11 +6,13 @@
 @section('content')
 
 <x-alert-messsages type="success"/>
+
 <div class="row d-flex flex-end justify-content-end pb-4" style="padding-right: 10px;"> 
     <a href="{{ route('classrooms.create') }}" class="btn btn-primary w-auto">
         <i class="fa fa-add" ></i> Create Classroom
     </a>
 </div>
+<h2 class="mb-4">Classrooms</h2>
 
 <div class="row ">
 @forelse ($classrooms as $classroom)
