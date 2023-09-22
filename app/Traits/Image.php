@@ -41,5 +41,6 @@ trait Image {
             Storage::disk($disk)->delete($path);
     }
 
-  
+
+    
 }

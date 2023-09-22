@@ -5,19 +5,27 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Topic extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $fillable = ['name', 'classroom_id', 'user_id'];
-    protected static function boot(): void
+    public $timestamps = false;
+    protected static function booted(): void
     {
-        parent::boot();
+        
         static::creating(function ($topic) {
-            $topic->user_id = 1 ;
+            $topic->user_id = Auth::id() ;
         });
 
       
     }
-    public $timestamps = false;
+    
+    public function classworks():HasMany {
+        return $this->hasMany(Classwork::class, 'topic_id');
+    }
+   
 }

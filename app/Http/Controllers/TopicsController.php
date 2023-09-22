@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicRequest;
+use App\Models\Classroom;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class TopicsController extends Controller
      */
     public function store(TopicRequest $request)
     {
+    
         Topic::create( $request->validated());
         return redirect()->back()->with('success', 'Topic Created Successfully!');
     }
@@ -38,7 +40,7 @@ class TopicsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Topic $topic)
+    public function show(Classroom $classroom ,Topic $topic)
     {
         return response()->json(['data'=> $topic]);
     }
@@ -51,7 +53,7 @@ class TopicsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TopicRequest $request, Topic $topic)
+    public function update(TopicRequest $request,Classroom $classroom, Topic $topic)
     {
         $topic->update($request->validated());
         return redirect()->back()->with('success', 'Topic Updated Successfully!');
@@ -61,10 +63,26 @@ class TopicsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Topic $topic)
+    public function destroy(Classroom $classroom , Topic $topic)
     {
         $topic->delete();
         return redirect()->back()->with('success', 'Topic Deleted Successfully!');
 
+    }
+
+    public function trashed(){
+
+        $topics = Topic::onlyTrashed()->latest('deleted_at')->get();
+        return view('topics.trashed',compact('topics'));
+    }
+    public function restore($id) {
+        $topic = Topic::onlyTrashed()->findOrFail($id);
+        $topic->restore();
+        return redirect()->route('classroom.topics.trashed')->with('success', 'Topic Restored Successfully!');
+    }
+    public function forceDelete($id) {
+        $topic = Topic::onlyTrashed()->findOrFail($id);
+        
+        return redirect()->route('classroom.topics.trashed')->with('success', 'Topic Deleted Forever!');
     }
 }

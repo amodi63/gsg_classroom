@@ -5,7 +5,7 @@
            
                 
            
-            <form action="{{ route('topics.update', $topic->id) }}" method="post">
+            <form action="{{ route('classroom.topics.update',[$classroom->id ,$topic->id]) }}" method="post">
             
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add New Topic</h5>

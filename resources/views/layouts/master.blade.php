@@ -24,15 +24,16 @@
 </head>
 
 <body>
+    @include('layouts.header')
+    
+        
+        
     <div class="container">
-        
-        
-        @include('layouts.header')
-     
 
         <main>
             @yield('content')
         </main>
+    </div>
        @include('layouts.footer')
 </body>
 

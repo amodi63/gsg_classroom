@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -183,6 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Classwork' => App\Models\Classwork::class,
     ])->toArray(),
 
 ];
